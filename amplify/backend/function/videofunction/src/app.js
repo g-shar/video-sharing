@@ -37,7 +37,7 @@ app.get('/video', async (req, res) => {
   // Add your code here
   console.log('app.get(video) called')
   let params = {
-    TableName: process.env.STORAGE_VIDEOTABLE_NAME
+    TableName: 'videotable-dev'
   }
   docClient.scan(params, (err, data) => {
     if (err) {
@@ -49,13 +49,16 @@ app.get('/video', async (req, res) => {
 });
 
 app.post('/video', async(req, res) => {
+  const date = new Date()
+  const formatted_date = new Intl.DateTimeFormat('en-US').format(date)
   let params = {
-    TableName: process.env.STORAGE_VIDEOTABLE_NAME,
+    TableName: 'videotable-dev',
     Item: {
       id: id(),
       title: req.body.title,
-      date_created: new Date().toString(),
-      url: req.body.url
+      date_posted: formatted_date,
+      path: req.body.path,
+      user: req.body.user
     }
   }
   docClient.put(params, (err, data) => {

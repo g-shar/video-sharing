@@ -1,5 +1,20 @@
+body {
+  background: rgb(235, 235, 235);
+}
+
+:root {
+  --amplify-primary-color: #0d358b;
+  --amplify-primary-tint: #6da4e2;
+  --amplify-primary-shade: #3b73ec;
+}
+
 .App {
-  text-align: center;
+  display: flex;
+  max-width: 1000px;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  background: rgb(235, 235, 235);
 }
 
 .App-logo {
@@ -35,4 +50,114 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.addVideo {
+  position: fixed;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  align-items: center;
+  justify-content: center;
+}
+
+.addVideo-form {
+  background: white;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.addVideo-input {
+  margin: 25px 0 0 0;
+  font-size: 16px;
+  height: 25px;
+}
+
+.addVideo-title {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+#addVideo-button {
+  padding: 10px;
+  margin-top: 20px;
+  background-color: rgb(17, 103, 184);
+  color: white;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+#addVideo-button:hover {
+  background-color: rgb(82, 153, 219);
+}
+
+.exit {
+  position: relative;
+	float: right;
+  cursor: pointer;
+  text-align: right;
+}
+
+.errorMessage {
+  color: red;
+  margin: 0;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.video-wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 10px 24px;
+  margin-bottom: 30px;
+  border-radius: 16px;
+}
+
+.video {
+  width: 100%;
+  padding-bottom: 20px;
+}
+.video-title {
+  margin-bottom: 8px;
+}
+
+.video-user {
+  font-size: 14px;
+  margin: 0;
+  margin-bottom: 4px;
+  color: rgb(78, 78, 78);
+}
+.video-date {
+  font-size: 14px;
+  margin: 0;
+  margin-bottom: 10px;
+  color: rgb(78, 78, 78);
+}
+
+.addVideo-button {
+  margin: 20px 0;
+  border: none;
+  font-size: 18px;
+  color: white;
+  background-color: rgb(17, 103, 184);
+  max-width: 500px;
+  height: 50px;
+  width: 100%;
+}
+
+.addVideo-button:hover {
+  background-color: rgb(82, 153, 219);
+  cursor: pointer;
+}
+
+.uploadedMessage {
+  color: blue;
+  text-align: center;
 }

@@ -15,11 +15,17 @@
       "function": {
         "videofunction": {
           "deploymentBucketName": "amplify-reactvideo-dev-184342-deployment",
-          "s3Key": "amplify-builds/videofunction-4c576162765466514950-build.zip"
+          "s3Key": "amplify-builds/videofunction-72673059546936623158-build.zip"
         }
       },
       "auth": {
         "reactvideo2e42ec3c": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d1443zaswqcubh",
+          "type": "cicd"
+        }
       }
     }
   }
