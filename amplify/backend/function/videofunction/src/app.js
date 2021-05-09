@@ -37,7 +37,7 @@ app.get('/video', async (req, res) => {
   // Add your code here
   console.log('app.get(video) called')
   let params = {
-    TableName: 'videotable'
+    TableName: process.env.STORAGE_VIDEOTABLE_NAME
   }
   docClient.scan(params, (err, data) => {
     if (err) {
@@ -50,7 +50,7 @@ app.get('/video', async (req, res) => {
 
 app.post('/video', async(req, res) => {
   let params = {
-    TableName: 'videotable',
+    TableName: process.env.STORAGE_VIDEOTABLE_NAME,
     Item: {
       id: id(),
       title: req.body.title,
