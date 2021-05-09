@@ -1,0 +1,35 @@
+{
+  "paths": [
+    {
+      "name": "/video",
+      "lambdaFunction": "videofunction",
+      "privacy": {
+        "open": true
+      },
+      "policyResourceName": "/video"
+    }
+  ],
+  "resourceName": "videoapi",
+  "apiName": "videoapi",
+  "functionArns": [
+    {
+      "lambdaFunction": "videofunction"
+    }
+  ],
+  "privacy": {
+    "auth": 0,
+    "unauth": 0,
+    "authRoleName": "amplify-reactvideo-dev-184342-authRole",
+    "unAuthRoleName": "amplify-reactvideo-dev-184342-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "videofunction",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-reactvideo-dev-184342-authRole",
+      "UnauthRoleArn": "arn:aws:iam::470241724890:role/amplify-reactvideo-dev-184342-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::470241724890:role/amplify-reactvideo-dev-184342-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-reactvideo-dev-184342-deployment",
+      "UnauthRoleName": "amplify-reactvideo-dev-184342-unauthRole",
+      "StackName": "amplify-reactvideo-dev-184342",
+      "StackId": "arn:aws:cloudformation:us-east-1:470241724890:stack/amplify-reactvideo-dev-184342/d3769670-af9e-11eb-a7d0-12a7ac2a1bf1",
+      "AmplifyAppId": "d1443zaswqcubh"
+    },
+    "categories": {
+      "function": {
+        "videofunction": {
+          "deploymentBucketName": "amplify-reactvideo-dev-184342-deployment",
+          "s3Key": "amplify-builds/videofunction-4c576162765466514950-build.zip"
+        }
+      },
+      "auth": {
+        "reactvideo2e42ec3c": {}
+      }
+    }
+  }
+}
