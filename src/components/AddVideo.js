@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import Amplify, { Storage, API, Auth} from "aws-amplify";
+import { Storage, API, Auth} from "aws-amplify";
 import '../App.css'
 const apiName = 'videoapi'
 const path = '/video'
@@ -10,6 +10,10 @@ const AddVideo = ({toggle, handleToggle, setUploaded, uploaded}) => {
 	const [error, setErrorMessage] = useState('')
 	const [upload, setUpload] = useState('')
 
+	const generateId = () => {
+		return Date.now().toString(4).substring(0, 2) + Date.now().toString(9).substring(10);
+	}
+
 	const getUser = async () => {
 		const user = Auth.currentUserInfo()
 		return user
@@ -18,8 +22,14 @@ const AddVideo = ({toggle, handleToggle, setUploaded, uploaded}) => {
 	const uploadFile = async (event) => {
 		event.preventDefault()
 		try {
-			if (title.length == 0) {
+			if (title.length === 0) {
 				setErrorMessage('Give the video a title')
+				setTimeout(() => {
+					setErrorMessage('')
+				}, 3000)
+				return;
+			} else if (!file) {
+				setErrorMessage('No file is attached')
 				setTimeout(() => {
 					setErrorMessage('')
 				}, 3000)
@@ -28,7 +38,8 @@ const AddVideo = ({toggle, handleToggle, setUploaded, uploaded}) => {
 			setUpload('Uploading...')
 			const userPromise = await getUser()
 			const user = userPromise.username
-			const promise = await Storage.put(file.name, file)
+			const newFileName = generateId() + file.name
+			const promise = await Storage.put(newFileName, file)
 			const videoKey = promise.key
 			const videoObject = {
 				body: {
@@ -46,7 +57,10 @@ const AddVideo = ({toggle, handleToggle, setUploaded, uploaded}) => {
 			setFile(null)
 			setTitle('')
 		} catch (error) {
-			console.log('error uploading file')
+			setErrorMessage('Error uploading file')
+			setTimeout(() => {
+				setErrorMessage('')
+			}, 3000)
 			setFile(null)
 			setTitle('')
 		}

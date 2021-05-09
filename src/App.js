@@ -1,8 +1,7 @@
-import logo from './logo.svg';
 import React, { useState, useEffect} from 'react';
 import './App.css';
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
-import Amplify, { API, Storage, Auth } from "aws-amplify";
+import Amplify, { API, Storage } from "aws-amplify";
 import awsExports from "./aws-exports";
 import AddVideo from './components/AddVideo';
 import Video from './components/Video';
@@ -17,27 +16,21 @@ const myInit = {
 const App = () => {
   const [videos, setVideos] = useState([])
   const [toggle, setToggle] = useState(false)
-  const [file, setFile] = useState(null)
   const [uploaded, setUploaded] = useState(false)
-
-
 
   const fetchVideo = async (video) => {
     const fileUrl = await Storage.get(video.path)
-    console.log('fileUrl: ', fileUrl)
     const videoObject = {
       ...video,
       fileUrl
     }
-    console.log('video object: ', videoObject)
     return videoObject
   }
 
   useEffect(() => {
     const getAllVideos = async () => {
-      const videoResponse = await API.get('videoapi', '/video', myInit)
-      console.log('videoResponse: ',videoResponse)
-      if(!videoResponse.Items || videoResponse.Items.length == 0) {
+      const videoResponse = await API.get(apiName, path, myInit)
+      if(!videoResponse.Items || videoResponse.Items.length === 0) {
         return  (
           <>
           {toggle ? <AddVideo toggle={toggle} handleToggle={handleToggle} 
@@ -46,18 +39,15 @@ const App = () => {
         )
       }
       const vids = await Promise.all(videoResponse.Items.map(v => fetchVideo(v)))
-      console.log('vids: ',vids)
       setVideos(vids)
     }
     getAllVideos()
   }, [uploaded])
 
   const handleToggle = () => {
-    console.log(toggle)
     setToggle(!toggle)
   }
 
-  console.log('videos: ', videos)
   return (
     <>
     <AmplifySignOut />
