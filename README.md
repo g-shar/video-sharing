@@ -1,21 +1,5 @@
 # Video-Sharing Application
 
-This application took me approximately 2 days to complete
-
-Day 1:
-- Reading documentation
-- Setting up Amplify CLI and dev environment
-- Installing required libraries
-- Initializing database and API
-- Implementing user authentication
-
-Day 2:
-- Implementing video upload
-- Creating a simple DynamoDB databaase
-- Designing frontend
-- Bug fixing
-- Deployment
-
 ## User Authentication
 User Authentication was implemented using Amazon Cognito and Amplify.
 
